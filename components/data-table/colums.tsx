@@ -3,7 +3,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Contact } from "@/lib/types";
-import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
+import { TrashIcon } from "@radix-ui/react-icons";
+import EditContactFormDialog from "../edit-contact-form-dialog";
 
 export const contactColumns: ColumnDef<Contact>[] = [
   {
@@ -25,11 +26,10 @@ export const contactColumns: ColumnDef<Contact>[] = [
   {
     id: "actions",
     header: "Actions",
-    cell: (row) => (
+    cell: ({ row }) => (
       <div className="flex items-center space-x-1">
-        <Button className="rounded-full text-slate-500 bg-slate-100 hover:bg-slate-200 shadow-none aspect-square p-0">
-          <Pencil1Icon />
-        </Button>
+        <EditContactFormDialog contact={row.original} />
+
         <Button className="rounded-full text-red-500 bg-red-100 hover:bg-red-200 shadow-none aspect-square p-0">
           <TrashIcon />
         </Button>

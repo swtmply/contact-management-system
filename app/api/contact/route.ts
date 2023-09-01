@@ -21,7 +21,6 @@ export async function POST(request: Request) {
 
   await fs.writeFile("./lib/contacts.json", JSON.stringify(contacts));
 
-  revalidatePath("/");
   return NextResponse.json({ message: "Contact added successfully" });
 }
 
@@ -37,7 +36,6 @@ export async function PUT(request: Request) {
 
   await fs.writeFile("./lib/contacts.json", JSON.stringify(contacts));
 
-  revalidatePath("/");
   return NextResponse.json({ message: "Contact updated successfully" });
 }
 
@@ -53,6 +51,5 @@ export async function DELETE(request: Request) {
 
   await fs.writeFile("./lib/contacts.json", JSON.stringify(contacts));
 
-  revalidatePath("/");
   return NextResponse.json({ message: "Contact deleted successfully" });
 }

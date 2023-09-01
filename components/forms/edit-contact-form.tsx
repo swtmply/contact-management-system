@@ -17,6 +17,7 @@ import { z } from "zod";
 import { useTransition } from "react";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
+import { Contact } from "@/lib/types";
 
 export const contactSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -32,34 +33,33 @@ export const contactSchema = z.object({
     .min(11, { message: "Phone must be at least 11 characters" }),
 });
 
-interface AddContactFormProps {
+interface EditContactFormProps {
   closeDialog: () => void;
+  contact: Contact;
 }
 
-export function AddContactForm({ closeDialog }: AddContactFormProps) {
+export function EditContactForm({
+  closeDialog,
+  contact,
+}: EditContactFormProps) {
   const { toast } = useToast();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-    },
+    defaultValues: contact,
   });
 
   function onSubmit(values: z.infer<typeof contactSchema>) {
     startTransition(async () => {
       try {
         await fetch("http://localhost:3000/api/contact", {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify({ id: contact.id, ...values }),
         });
 
         closeDialog();
