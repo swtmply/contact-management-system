@@ -1,10 +1,9 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
 import { Contact } from "@/lib/types";
-import { TrashIcon } from "@radix-ui/react-icons";
 import EditContactFormDialog from "../edit-contact-form-dialog";
+import ConfirmDeleteDialog from "../confirm-delete-dialog";
 
 export const contactColumns: ColumnDef<Contact>[] = [
   {
@@ -29,10 +28,7 @@ export const contactColumns: ColumnDef<Contact>[] = [
     cell: ({ row }) => (
       <div className="flex items-center space-x-1">
         <EditContactFormDialog contact={row.original} />
-
-        <Button className="rounded-full text-red-500 bg-red-100 hover:bg-red-200 shadow-none aspect-square p-0">
-          <TrashIcon />
-        </Button>
+        <ConfirmDeleteDialog id={row.original.id} />
       </div>
     ),
   },
