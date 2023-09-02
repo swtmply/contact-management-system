@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { DataTable } from "@/components/data-table/data-table";
 import { contactColumns } from "@/components/data-table/colums";
-import AddContactFormDialog from "@/components/add-contact-form-dialog";
 
 export default async function Home() {
   // Fetch the contacts data from the API
@@ -16,7 +15,6 @@ export default async function Home() {
           <Link href="/" className="text-xl font-bold">
             Contacts
           </Link>
-          <AddContactFormDialog />
         </div>
 
         <DataTable columns={contactColumns} data={contacts} />
