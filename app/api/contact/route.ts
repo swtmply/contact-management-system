@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import { Contact } from "@/lib/types";
-import { revalidatePath } from "next/cache";
 
 // Create an API for GET
 export async function GET() {

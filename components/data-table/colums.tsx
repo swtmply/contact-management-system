@@ -4,11 +4,17 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Contact } from "@/lib/types";
 import EditContactFormDialog from "../edit-contact-form-dialog";
 import ConfirmDeleteDialog from "../confirm-delete-dialog";
+import Link from "next/link";
 
 export const contactColumns: ColumnDef<Contact>[] = [
   {
     accessorKey: "name",
     header: "Name",
+    cell: ({ row }) => (
+      <Link href={`/contact/${row.original.id}`} className="text-blue-500">
+        {row.original.name}
+      </Link>
+    ),
   },
   {
     accessorKey: "email",
