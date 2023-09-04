@@ -14,6 +14,7 @@ import {
 import { TrashIcon } from "@radix-ui/react-icons";
 import { useToast } from "./ui/use-toast";
 import { useRouter } from "next/navigation";
+import { deleteContact } from "@/app/_actions/contacts";
 
 interface ConfirmDeleteDialogProps {
   id: number;
@@ -29,14 +30,10 @@ const ConfirmDeleteDialog = ({ id }: ConfirmDeleteDialogProps) => {
     // delete contact and create a toast message
     startTransition(async () => {
       try {
-        await fetch(`http://localhost:3000/api/contact`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id }),
-          method: "DELETE",
-        });
+        await deleteContact(id);
+
         setOpen(false);
+
         toast({
           title: "Contact deleted",
           description: "Contact has been deleted successfully.",
