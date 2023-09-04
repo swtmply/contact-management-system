@@ -4,7 +4,9 @@
 import { prisma } from "@/lib/db";
 import { Contact } from "@prisma/client";
 
-export const createContact = async (contact: Contact) => {
+export const createContact = async (
+  contact: Pick<Contact, "name" | "email" | "phone" | "address">
+) => {
   return await prisma.contact.create({ data: contact });
 };
 

@@ -17,7 +17,7 @@ import { z } from "zod";
 import { useTransition } from "react";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
-import { Contact } from "@/lib/types";
+import { Contact } from "@prisma/client";
 
 export const contactSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),

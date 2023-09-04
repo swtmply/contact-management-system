@@ -1,10 +1,10 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Contact } from "@/lib/types";
 import EditContactFormDialog from "../edit-contact-form-dialog";
 import ConfirmDeleteDialog from "../confirm-delete-dialog";
 import Link from "next/link";
+import { Contact } from "@prisma/client";
 
 export const contactColumns: ColumnDef<Contact>[] = [
   {

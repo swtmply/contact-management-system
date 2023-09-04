@@ -10,8 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
-import { Contact } from "@/lib/types";
 import { Pencil1Icon } from "@radix-ui/react-icons";
+import { Contact } from "@prisma/client";
 
 interface EditContactFormDialogProps {
   contact: Contact;

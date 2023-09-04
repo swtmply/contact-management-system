@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { DataTable } from "@/components/data-table/data-table";
 import { contactColumns } from "@/components/data-table/colums";
+import { getContacts } from "./_actions/contacts";
 
 export default async function Home() {
-  // Fetch the contacts data from the API
-  const contacts = await fetch("http://localhost:3000/api/contact", {
-    cache: "no-store",
-  }).then((res) => res.json());
+  // Fetch the contacts data from the server actions
+  const contacts = await getContacts();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
