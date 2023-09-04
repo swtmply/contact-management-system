@@ -18,6 +18,7 @@ import { useTransition } from "react";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Contact } from "@prisma/client";
+import { updateContact } from "@/app/_actions/contacts";
 
 export const contactSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -54,13 +55,7 @@ export function EditContactForm({
   function onSubmit(values: z.infer<typeof contactSchema>) {
     startTransition(async () => {
       try {
-        await fetch("http://localhost:3000/api/contact", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id: contact.id, ...values }),
-        });
+        await updateContact(contact.id, values);
 
         closeDialog();
         router.refresh();
