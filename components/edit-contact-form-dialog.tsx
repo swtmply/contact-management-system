@@ -28,7 +28,10 @@ const EditContactFormDialog = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger || (
-          <Button className="rounded-full text-slate-500 bg-slate-100 hover:bg-slate-200 shadow-none aspect-square p-0">
+          <Button
+            data-testid="table-edit-button"
+            className="rounded-full text-slate-500 bg-slate-100 hover:bg-slate-200 shadow-none aspect-square p-0"
+          >
             <Pencil1Icon />
           </Button>
         )}

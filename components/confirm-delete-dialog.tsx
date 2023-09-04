@@ -51,7 +51,10 @@ const ConfirmDeleteDialog = ({ id }: ConfirmDeleteDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full text-red-500 bg-red-100 hover:bg-red-200 shadow-none aspect-square p-0">
+        <Button
+          data-testid="table-delete-button"
+          className="rounded-full text-red-500 bg-red-100 hover:bg-red-200 shadow-none aspect-square p-0"
+        >
           <TrashIcon />
         </Button>
       </DialogTrigger>

@@ -9,9 +9,7 @@ export type ContactInput = Pick<
   "name" | "email" | "phone" | "address"
 >;
 
-export const createContact = async (
-  contact: Pick<Contact, "name" | "email" | "phone" | "address">
-) => {
+export const createContact = async (contact: ContactInput) => {
   return await prisma.contact.create({ data: contact });
 };
 
@@ -23,7 +21,7 @@ export const getContact = async (id: number) => {
   return await prisma.contact.findUnique({ where: { id } });
 };
 
-export const updateContact = async (id: number, contact: Contact) => {
+export const updateContact = async (id: number, contact: ContactInput) => {
   return await prisma.contact.update({ where: { id }, data: contact });
 };
 

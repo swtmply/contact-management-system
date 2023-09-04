@@ -18,7 +18,7 @@ export default async function ContactPage({
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full">
         <div className="flex justify-between mb-4">
-          <p className="text-xl font-bold">{contact.name}</p>
+          <h1 className="text-xl font-bold">{contact.name}</h1>
           <EditContactFormDialog
             contact={contact}
             trigger={<Button>Edit Contact</Button>}
