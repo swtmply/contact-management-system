@@ -58,7 +58,6 @@ export function EditContactForm({
         await updateContact(contact.id, values);
 
         closeDialog();
-        router.refresh();
 
         toast({
           title: "Contact added successfully",

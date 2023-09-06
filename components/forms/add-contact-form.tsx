@@ -58,7 +58,6 @@ export function AddContactForm({ closeDialog }: AddContactFormProps) {
         await createContact(values);
 
         closeDialog();
-        router.refresh();
 
         toast({
           title: "Contact added successfully",
